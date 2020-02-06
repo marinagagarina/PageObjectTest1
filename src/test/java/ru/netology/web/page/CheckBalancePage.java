@@ -1,7 +1,7 @@
 package ru.netology.web.page;
 
 import com.codeborne.selenide.SelenideElement;
-
+import ru.netology.web.data.DataHelper;
 import static com.codeborne.selenide.Selenide.$;
 
 public class CheckBalancePage {
@@ -11,69 +11,21 @@ public class CheckBalancePage {
     private SelenideElement reloadButton = $("[data-test-id='action-reload']");
     private SelenideElement actionDepositeButton = $("[data-test-id='action-deposit']");
 
-    public DashboardPage firstCardBalanceShouldBeLess() {
-        int newBalance = 0;
+
+    public int getFirstCardBalanceAfterTransfer() {
         String str = firstCardString.toString();
-        String[] сardList = str.split(" ");
-        for (int i = 0; i < сardList.length; i++) {
-            newBalance = Integer.parseInt(сardList[6]);
-        }
-        CardChoosePage balance = new CardChoosePage();
-        int lastBalance = balance.checkFirstCardBalance();
-        if (newBalance > lastBalance) {
-            actionDepositeButton.click();
-        }
-        return new DashboardPage();
+        return DataHelper.getCardBalance(str);
     }
-
-    public int checkFirstCardBalanceAfterTransfer(){
-        int newBalance = 0;
-        String str = firstCardString.toString();
-        String[] firstCardList = str.split(" ");
-        for (int i = 0; i < firstCardList.length; i++){
-            newBalance = Integer.parseInt(firstCardList[6]);
-
-        }
-        return newBalance;
-    }
-
-    public void secondCardBalanceShouldBeLess() {
-        int newBalance = 0;
+    public int getSecondCardBalanceAfterTransfer() {
         String str = secondCardString.toString();
-        String[] сardList = str.split(" ");
-        for (int i = 0; i < сardList.length; i++) {
-            newBalance = Integer.parseInt(сardList[6]);
-        }
-        CardChoosePage balance = new CardChoosePage();
-        int limitBalance = balance.checkSecondCardBalance();
-        if (newBalance < limitBalance) {
-            reloadButton.click();
-        }
+        return DataHelper.getCardBalance(str);
     }
-    public void checkFirstCardBalanceIfAmountDouble() {
-        double newBalance = 0;
+    public double getFirstCardBalanceIfAmountDoubleAfterTransfer() {
         String str = firstCardString.toString();
-        String[] сardList = str.split(" ");
-        for (int i = 0; i < сardList.length; i++) {
-            newBalance = Double.parseDouble(сardList[6]);
-        }
-        CardChoosePage balance = new CardChoosePage();
-        double limitBalance = balance.checkFirstCardBalance();
-        if ((limitBalance - newBalance) % 1 != 0) {
-            reloadButton.click();
-        }
+        return DataHelper.getCardBalanceIfAmountDouble(str);
     }
-    public void checkSecondCardBalanceIfAmountDouble() {
-        double newBalance = 0;
+    public double getSecondCardBalanceIfAmountDoubleAfterTransfer() {
         String str = secondCardString.toString();
-        String[] сardList = str.split(" ");
-        for (int i = 0; i < сardList.length; i++) {
-            newBalance = Double.parseDouble(сardList[6]);
-        }
-        CardChoosePage balance = new CardChoosePage();
-        double limitBalance = balance.checkSecondCardBalance();
-        if ((limitBalance - newBalance) % 1 != 0) {
-            reloadButton.click();
-        }
+        return DataHelper.getCardBalanceIfAmountDouble(str);
     }
 }
