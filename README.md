@@ -1,3 +1,5 @@
+### Project status [![Build status](https://ci.appveyor.com/api/projects/status/mjgk8v1xl85tr7ea?svg=true)](https://ci.appveyor.com/project/shvedcate/pageobjecttest)
+
 ## Домашнее задание к занятию «2.4. BDD»
 
 ### Задача №1 - Page Object's
