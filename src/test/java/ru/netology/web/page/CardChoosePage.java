@@ -23,25 +23,20 @@ import static com.codeborne.selenide.Selenide.$;
             return new TransferPage();
         }
 
-        public int getFirstCardBalance() {
-            String str = firstCardString.toString();
-            int firstCardBalance = getCardBalance(str);
-            return firstCardBalance;
+        public String getFirstCardNumber() {
+            String firstCardNumber = firstCardString.toString();
+            return firstCardNumber;
+        }
+        public String getSecondCardNumber() {
+            String secondCardNumber = secondCardString.toString();
+            return secondCardNumber;
         }
 
-        public int getSecondCardBalance() {
-            String str = secondCardString.toString();
-            int secondCardBalance = getCardBalance(str);
-            return secondCardBalance;
-        }
 
-        public double getFirstCardBalanceIfAmountDouble() {
-            String str = firstCardString.toString();
-            return getCardBalanceIfAmountDouble(str);
-        }
-        public double getSecondCardBalanceIfAmountDouble() {
-            String str = secondCardString.toString();
-            return getCardBalanceIfAmountDouble(str);
+        public static String setTansferAmount(String cardNumber) {
+            int limit = getCardBalance(cardNumber);
+            String transferAmount = Integer.toString(getRandomAmount(limit));
+            return transferAmount;
         }
 
         @Value
@@ -51,32 +46,35 @@ import static com.codeborne.selenide.Selenide.$;
             private String cardNumber;
         }
         public static MoneyTransfer firstCardInfo() {
-            CardChoosePage balance = new CardChoosePage();
-            int limit = balance.getFirstCardBalance();
+            CardChoosePage cardNumber = new CardChoosePage();
+            String firstCardNumber = cardNumber.getFirstCardNumber();
+            int limit = getCardBalance(firstCardNumber);
             String amount = Integer.toString(getRandomAmount(limit));
             return new MoneyTransfer(amount, "5559 0000 0000 0001");
         }
-
-
         public static MoneyTransfer secondCardInfo() {
-            CardChoosePage balance = new CardChoosePage();
-            int limit = balance.getSecondCardBalance();
+            CardChoosePage cardNumber = new CardChoosePage();
+            String secondCardNumber = cardNumber.getSecondCardNumber();
+            int limit = getCardBalance(secondCardNumber);
             String amount = Integer.toString(getRandomAmount(limit));
             return new MoneyTransfer(amount, "5559 0000 0000 0002");
         }
 
-        public static MoneyTransfer firstCardInfoWhenAmountDouble() {
-            CardChoosePage balance = new CardChoosePage();
-            double limit = balance.getFirstCardBalanceIfAmountDouble();
+        public static MoneyTransfer firstCardInfoWhenDouble() {
+            CardChoosePage cardNumber = new CardChoosePage();
+            String firstCardNumber = cardNumber.getFirstCardNumber();
+            double limit = getCardBalance(firstCardNumber);
             String amount = Double.toString(getRandomDoubleAmount(limit));
             return new MoneyTransfer(amount, "5559 0000 0000 0001");
         }
-        public static MoneyTransfer secondCardInfoWhenAmountDouble() {
-            CardChoosePage balance = new CardChoosePage();
-            double limit = balance.getSecondCardBalanceIfAmountDouble();
+        public static MoneyTransfer secondCardInfoWhenDouble() {
+            CardChoosePage cardNumber = new CardChoosePage();
+            String secondCardNumber = cardNumber.getSecondCardNumber();
+            double limit = getCardBalance(secondCardNumber);
             String amount = Double.toString(getRandomDoubleAmount(limit));
             return new MoneyTransfer(amount, "5559 0000 0000 0002");
         }
+
 
         public static int getRandomAmount(int max) {
             Random random = new Random();
@@ -91,12 +89,6 @@ import static com.codeborne.selenide.Selenide.$;
             int balance = 0;
             String[] cardList = cardNumber.split(" ");
             balance = Integer.parseInt(cardList[6]);
-            return balance;
-        }
-        public static double getCardBalanceIfAmountDouble(String str) {
-            double balance = 0;
-            String[] cardList = str.split(" ");
-            balance = Double.parseDouble(cardList[6]);
             return balance;
         }
     }
