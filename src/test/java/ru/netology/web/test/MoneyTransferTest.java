@@ -21,16 +21,11 @@ public class MoneyTransferTest {
         verificationPage.validVerify(verificationCode);
 
         val transferPage = new TransferPage();
-        val cardNumber = new CardChoosePage();
-        String secondCardNumber = cardNumber.getSecondCardNumber();
+        String secondCardNumber = CardChoosePage.getSecondCardNumber();
 
         String amount = getTansferAmount(secondCardNumber);
-
         val cardInfo = DataHelper.secondCardInfo();
-
-        val transferDashboard = new CardChoosePage();
-        transferDashboard.chooseFirstCardForTransfer();
-
+        CardChoosePage.chooseFirstCardForTransfer();
         transferPage.putTransferAmount(amount);
         transferPage.putMoneyCard(cardInfo);
     }
@@ -44,15 +39,11 @@ public class MoneyTransferTest {
         verificationPage.validVerify(verificationCode);
 
         val transferPage = new TransferPage();
-        val cardNumber = new CardChoosePage();
-        String firstCardNumber = cardNumber.getFirstCardNumber();
+        String firstCardNumber = CardChoosePage.getFirstCardNumber();
 
         String amount = getTansferAmount(firstCardNumber);
-
         val cardInfo = DataHelper.firstCardInfo();
-
-        val transferDashboard = new CardChoosePage();
-        transferDashboard.chooseSecondCardForTransfer();
+        CardChoosePage.chooseSecondCardForTransfer();
         transferPage.putTransferAmount(amount);
         transferPage.putMoneyCard(cardInfo);
     }
@@ -66,30 +57,20 @@ public class MoneyTransferTest {
         verificationPage.validVerify(verificationCode);
 
         val transferPage = new TransferPage();
-        val cardNumber = new CardChoosePage();
-        String secondCardNumber = cardNumber.getSecondCardNumber();
-
+        String secondCardNumber = CardChoosePage.getSecondCardNumber();
         String amount = getTansferAmount(secondCardNumber);
-
         val cardInfo = DataHelper.secondCardInfo();
 
-        val firstCardBalanceBeforeTransfer = new CardChoosePage();
-        val cardNumberBeforeTransfer = new CardChoosePage();
-        String firstCardNumberBeforeTransfer = cardNumberBeforeTransfer.getFirstCardNumber();
-
-        int expected = (firstCardBalanceBeforeTransfer.getCardBalance(firstCardNumberBeforeTransfer)
+        String firstCardNumberBeforeTransfer = CardChoosePage.getFirstCardNumber();
+        int expected = (CardChoosePage.getCardBalance(firstCardNumberBeforeTransfer)
                 + Integer.parseInt(amount));
 
-        val transferDashboard = new CardChoosePage();
-        transferDashboard.chooseFirstCardForTransfer();
-
+        CardChoosePage.chooseFirstCardForTransfer();
         transferPage.putTransferAmount(amount);
         transferPage.putMoneyCard(cardInfo);
 
-        val firstCardBalanceAfterTransfer = new CardChoosePage();
-        val cardNumberAfterTransfer = new CardChoosePage();
-        String firstCardNumberAfterTransfer = cardNumberAfterTransfer.getFirstCardNumber();
-        int actual = firstCardBalanceAfterTransfer.getCardBalance(firstCardNumberAfterTransfer);
+        String firstCardNumberAfterTransfer = CardChoosePage.getFirstCardNumber();
+        int actual = CardChoosePage.getCardBalance(firstCardNumberAfterTransfer);
         assertEquals(expected, actual);
     }
     @Test
@@ -103,28 +84,20 @@ public class MoneyTransferTest {
 
         val transferPage = new TransferPage();
         val cardNumber = new CardChoosePage();
-        String firstCardNumber = cardNumber.getFirstCardNumber();
+        String firstCardNumber = CardChoosePage.getFirstCardNumber();
 
         String amount = getTansferAmount(firstCardNumber);
         val cardInfo = DataHelper.firstCardInfo();
+        String secondCardNumberBeforeTransfer = CardChoosePage.getSecondCardNumber();
 
-        val secondCardBalanceBeforeTransfer = new CardChoosePage();
-        val cardNumberBeforeTransfer = new CardChoosePage();
-        String secondCardNumberBeforeTransfer = cardNumberBeforeTransfer.getSecondCardNumber();
-
-        int expected = (secondCardBalanceBeforeTransfer.getCardBalance(secondCardNumberBeforeTransfer)
+        int expected = (CardChoosePage.getCardBalance(secondCardNumberBeforeTransfer)
                 + Integer.parseInt(amount));
-
-        val transferDashboard = new CardChoosePage();
-        transferDashboard.chooseSecondCardForTransfer();
+        CardChoosePage.chooseSecondCardForTransfer();
 
         transferPage.putTransferAmount(amount);
         transferPage.putMoneyCard(cardInfo);
-
-        val secondCardBalanceAfterTransfer = new CardChoosePage();
-        val cardNumberAfterTransfer = new CardChoosePage();
-        String secondCardNumberAfterTransfer = cardNumberAfterTransfer.getSecondCardNumber();
-        int actual = secondCardBalanceAfterTransfer.getCardBalance(secondCardNumberAfterTransfer);
+        String secondCardNumberAfterTransfer = CardChoosePage.getSecondCardNumber();
+        int actual = CardChoosePage.getCardBalance(secondCardNumberAfterTransfer);
         assertEquals(expected, actual);
     }
     @Test
@@ -137,15 +110,11 @@ public class MoneyTransferTest {
         verificationPage.validVerify(verificationCode);
 
         val transferPage = new TransferPage();
-        val cardNumber = new CardChoosePage();
-        String secondCardNumber = cardNumber.getSecondCardNumber();
-
+        String secondCardNumber = CardChoosePage.getSecondCardNumber();
         String amount = getTansferAmountWhenDouble(secondCardNumber);
 
         val cardInfo = DataHelper.secondCardInfo();
-
-        val transferDashboard = new CardChoosePage();
-        transferDashboard.chooseFirstCardForTransfer();
+        CardChoosePage.chooseFirstCardForTransfer();
         transferPage.putTransferAmount(amount);
         transferPage.putMoneyCard(cardInfo);
     }
@@ -160,15 +129,11 @@ public class MoneyTransferTest {
         verificationPage.validVerify(verificationCode);
 
         val transferPage = new TransferPage();
-        val cardNumber = new CardChoosePage();
-        String firstCardNumber = cardNumber.getFirstCardNumber();
-
+        String firstCardNumber = CardChoosePage.getFirstCardNumber();
         String amount = getTansferAmountWhenDouble(firstCardNumber);
 
         val cardInfo = DataHelper.firstCardInfo();
-
-        val transferDashboard = new CardChoosePage();
-        transferDashboard.chooseSecondCardForTransfer();
+        CardChoosePage.chooseSecondCardForTransfer();
         transferPage.putTransferAmount(amount);
         transferPage.putMoneyCard(cardInfo);
     }
@@ -182,29 +147,21 @@ public class MoneyTransferTest {
         verificationPage.validVerify(verificationCode);
 
         val transferPage = new TransferPage();
-        val cardNumber = new CardChoosePage();
-        String secondCardNumber = cardNumber.getSecondCardNumber();
+        String secondCardNumber = CardChoosePage.getSecondCardNumber();
 
         String amount = getTansferAmountWhenDouble(secondCardNumber);
         val cardInfo = DataHelper.secondCardInfo();
+        String firstCardNumberBeforeTransfer = CardChoosePage.getFirstCardNumber();
 
-        val firstCardBalanceBeforeTransfer = new CardChoosePage();
-        val cardNumberBeforeTransfer = new CardChoosePage();
-        String firstCardNumberBeforeTransfer = cardNumberBeforeTransfer.getFirstCardNumber();
-
-        double expected = (firstCardBalanceBeforeTransfer.getCardBalance(firstCardNumberBeforeTransfer)
+        double expected = (CardChoosePage.getCardBalance(firstCardNumberBeforeTransfer)
                 + Double.parseDouble(amount));
-
-        val transferDashboard = new CardChoosePage();
-        transferDashboard.chooseFirstCardForTransfer();
+        CardChoosePage.chooseFirstCardForTransfer();
 
         transferPage.putTransferAmount(amount);
         transferPage.putMoneyCard(cardInfo);
 
-        val firstCardBalanceAfterTransfer = new CardChoosePage();
-        val cardNumberAfterTransfer = new CardChoosePage();
-        String firstCardNumberAfterTransfer = cardNumberAfterTransfer.getFirstCardNumber();
-        double actual = firstCardBalanceAfterTransfer.getCardBalance(firstCardNumberAfterTransfer);
+        String firstCardNumberAfterTransfer = CardChoosePage.getFirstCardNumber();
+        double actual = CardChoosePage.getCardBalance(firstCardNumberAfterTransfer);
         assertEquals(expected, actual);
     }
 
@@ -218,29 +175,20 @@ public class MoneyTransferTest {
         verificationPage.validVerify(verificationCode);
 
         val transferPage = new TransferPage();
-        val cardNumber = new CardChoosePage();
-        String firstCardNumber = cardNumber.getFirstCardNumber();
+        String firstCardNumber = CardChoosePage.getFirstCardNumber();
 
         String amount = getTansferAmountWhenDouble(firstCardNumber);
         val cardInfo = DataHelper.firstCardInfo();
+        String secondCardNumberBeforeTransfer = CardChoosePage.getSecondCardNumber();
 
-        val secondCardBalanceBeforeTransfer = new CardChoosePage();
-        val cardNumberBeforeTransfer = new CardChoosePage();
-        String secondCardNumberBeforeTransfer = cardNumberBeforeTransfer.getSecondCardNumber();
-
-        double expected = (secondCardBalanceBeforeTransfer.getCardBalance(secondCardNumberBeforeTransfer)
+        double expected = (CardChoosePage.getCardBalance(secondCardNumberBeforeTransfer)
                 + Double.parseDouble(amount));
-
-        val transferDashboard = new CardChoosePage();
-        transferDashboard.chooseSecondCardForTransfer();
+        CardChoosePage.chooseSecondCardForTransfer();
 
         transferPage.putTransferAmount(amount);
         transferPage.putMoneyCard(cardInfo);
-
-        val secondCardBalanceAfterTransfer = new CardChoosePage();
-        val cardNumberAfterTransfer = new CardChoosePage();
-        String secondCardNumberAfterTransfer = cardNumberAfterTransfer.getSecondCardNumber();
-        double actual = secondCardBalanceAfterTransfer.getCardBalance(secondCardNumberAfterTransfer);
+        String secondCardNumberAfterTransfer = CardChoosePage.getSecondCardNumber();
+        double actual = CardChoosePage.getCardBalance(secondCardNumberAfterTransfer);
         assertEquals(expected, actual);
     }
 }

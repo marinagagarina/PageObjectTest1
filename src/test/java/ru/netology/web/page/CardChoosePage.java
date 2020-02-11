@@ -9,25 +9,25 @@ import java.util.Random;
 import static com.codeborne.selenide.Selenide.$;
 
     public class CardChoosePage {
-        private SelenideElement firstCardTransferButton = $("[data-test-id='action-deposit']");
-        private SelenideElement secondCardTransferButton = $("#root > div > ul > li:nth-child(2) > div > button");
-        private SelenideElement firstCardString = $("[data-test-id='92df3f1c-a033-48e6-8390-206f6b1f56c0']");
-        private SelenideElement secondCardString = $("[data-test-id='0f3f5c2a-249e-4c3d-8287-09f7a039391d']");
+        private static SelenideElement firstCardTransferButton = $("[data-test-id='action-deposit']");
+        private static SelenideElement secondCardTransferButton = $("#root > div > ul > li:nth-child(2) > div > button");
+        private static SelenideElement firstCardString = $("[data-test-id='92df3f1c-a033-48e6-8390-206f6b1f56c0']");
+        private static SelenideElement secondCardString = $("[data-test-id='0f3f5c2a-249e-4c3d-8287-09f7a039391d']");
 
-        public TransferPage chooseFirstCardForTransfer(){
+        public static TransferPage chooseFirstCardForTransfer(){
             firstCardTransferButton.click();
             return new TransferPage();
         }
-        public TransferPage chooseSecondCardForTransfer(){
+        public static TransferPage chooseSecondCardForTransfer(){
             secondCardTransferButton.click();
             return new TransferPage();
         }
 
-        public String getFirstCardNumber() {
+        public static String getFirstCardNumber() {
             String firstCardNumber = firstCardString.toString();
             return firstCardNumber;
         }
-        public String getSecondCardNumber() {
+        public static String getSecondCardNumber() {
             String secondCardNumber = secondCardString.toString();
             return secondCardNumber;
         }
