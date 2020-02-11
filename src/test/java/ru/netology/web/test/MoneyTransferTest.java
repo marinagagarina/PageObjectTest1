@@ -6,6 +6,8 @@ import ru.netology.web.data.DataHelper;
 import ru.netology.web.page.*;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static ru.netology.web.page.CardChoosePage.getTansferAmount;
+import static ru.netology.web.page.CardChoosePage.getTansferAmountWhenDouble;
 
 public class MoneyTransferTest {
 
@@ -21,13 +23,14 @@ public class MoneyTransferTest {
         val transferPage = new TransferPage();
         val cardNumber = new CardChoosePage();
         String secondCardNumber = cardNumber.getSecondCardNumber();
-        val transferAmount =  new CardChoosePage();
-        String amount = transferAmount.getTansferAmount(secondCardNumber);
+
+        String amount = getTansferAmount(secondCardNumber);
 
         val cardInfo = DataHelper.secondCardInfo();
 
         val transferDashboard = new CardChoosePage();
         transferDashboard.chooseFirstCardForTransfer();
+
         transferPage.putTransferAmount(amount);
         transferPage.putMoneyCard(cardInfo);
     }
@@ -43,8 +46,8 @@ public class MoneyTransferTest {
         val transferPage = new TransferPage();
         val cardNumber = new CardChoosePage();
         String firstCardNumber = cardNumber.getFirstCardNumber();
-        val transferAmount =  new CardChoosePage();
-        String amount = transferAmount.getTansferAmount(firstCardNumber);
+
+        String amount = getTansferAmount(firstCardNumber);
 
         val cardInfo = DataHelper.firstCardInfo();
 
@@ -65,8 +68,8 @@ public class MoneyTransferTest {
         val transferPage = new TransferPage();
         val cardNumber = new CardChoosePage();
         String secondCardNumber = cardNumber.getSecondCardNumber();
-        val transferAmount =  new CardChoosePage();
-        String amount = transferAmount.getTansferAmount(secondCardNumber);
+
+        String amount = getTansferAmount(secondCardNumber);
 
         val cardInfo = DataHelper.secondCardInfo();
 
@@ -101,8 +104,8 @@ public class MoneyTransferTest {
         val transferPage = new TransferPage();
         val cardNumber = new CardChoosePage();
         String firstCardNumber = cardNumber.getFirstCardNumber();
-        val transferAmount =  new CardChoosePage();
-        String amount = transferAmount.getTansferAmount(firstCardNumber);
+
+        String amount = getTansferAmount(firstCardNumber);
         val cardInfo = DataHelper.firstCardInfo();
 
         val secondCardBalanceBeforeTransfer = new CardChoosePage();
@@ -136,8 +139,8 @@ public class MoneyTransferTest {
         val transferPage = new TransferPage();
         val cardNumber = new CardChoosePage();
         String secondCardNumber = cardNumber.getSecondCardNumber();
-        val transferAmount =  new CardChoosePage();
-        String amount = transferAmount.getTansferAmountWhenDouble(secondCardNumber);
+
+        String amount = getTansferAmountWhenDouble(secondCardNumber);
 
         val cardInfo = DataHelper.secondCardInfo();
 
@@ -159,8 +162,8 @@ public class MoneyTransferTest {
         val transferPage = new TransferPage();
         val cardNumber = new CardChoosePage();
         String firstCardNumber = cardNumber.getFirstCardNumber();
-        val transferAmount =  new CardChoosePage();
-        String amount = transferAmount.getTansferAmountWhenDouble(firstCardNumber);
+
+        String amount = getTansferAmountWhenDouble(firstCardNumber);
 
         val cardInfo = DataHelper.firstCardInfo();
 
@@ -181,8 +184,8 @@ public class MoneyTransferTest {
         val transferPage = new TransferPage();
         val cardNumber = new CardChoosePage();
         String secondCardNumber = cardNumber.getSecondCardNumber();
-        val transferAmount =  new CardChoosePage();
-        String amount = transferAmount.getTansferAmountWhenDouble(secondCardNumber);
+
+        String amount = getTansferAmountWhenDouble(secondCardNumber);
         val cardInfo = DataHelper.secondCardInfo();
 
         val firstCardBalanceBeforeTransfer = new CardChoosePage();
@@ -217,8 +220,8 @@ public class MoneyTransferTest {
         val transferPage = new TransferPage();
         val cardNumber = new CardChoosePage();
         String firstCardNumber = cardNumber.getFirstCardNumber();
-        val transferAmount =  new CardChoosePage();
-        String amount = transferAmount.getTansferAmountWhenDouble(firstCardNumber);
+
+        String amount = getTansferAmountWhenDouble(firstCardNumber);
         val cardInfo = DataHelper.firstCardInfo();
 
         val secondCardBalanceBeforeTransfer = new CardChoosePage();
