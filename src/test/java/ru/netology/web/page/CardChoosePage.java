@@ -33,54 +33,23 @@ import static com.codeborne.selenide.Selenide.$;
         }
 
 
-        public static String setTansferAmount(String cardNumber) {
+        public static String getTansferAmount(String cardNumber) {
             int limit = getCardBalance(cardNumber);
             String transferAmount = Integer.toString(getRandomAmount(limit));
             return transferAmount;
         }
-
-        @Value
-
-        public static class MoneyTransfer {
-            private String amount;
-            private String cardNumber;
-        }
-        public static MoneyTransfer firstCardInfo() {
-            CardChoosePage cardNumber = new CardChoosePage();
-            String firstCardNumber = cardNumber.getFirstCardNumber();
-            int limit = getCardBalance(firstCardNumber);
-            String amount = Integer.toString(getRandomAmount(limit));
-            return new MoneyTransfer(amount, "5559 0000 0000 0001");
-        }
-        public static MoneyTransfer secondCardInfo() {
-            CardChoosePage cardNumber = new CardChoosePage();
-            String secondCardNumber = cardNumber.getSecondCardNumber();
-            int limit = getCardBalance(secondCardNumber);
-            String amount = Integer.toString(getRandomAmount(limit));
-            return new MoneyTransfer(amount, "5559 0000 0000 0002");
-        }
-
-        public static MoneyTransfer firstCardInfoWhenDouble() {
-            CardChoosePage cardNumber = new CardChoosePage();
-            String firstCardNumber = cardNumber.getFirstCardNumber();
-            double limit = getCardBalance(firstCardNumber);
-            String amount = Double.toString(getRandomDoubleAmount(limit));
-            return new MoneyTransfer(amount, "5559 0000 0000 0001");
-        }
-        public static MoneyTransfer secondCardInfoWhenDouble() {
-            CardChoosePage cardNumber = new CardChoosePage();
-            String secondCardNumber = cardNumber.getSecondCardNumber();
-            double limit = getCardBalance(secondCardNumber);
-            String amount = Double.toString(getRandomDoubleAmount(limit));
-            return new MoneyTransfer(amount, "5559 0000 0000 0002");
+        public static String getTansferAmountWhenDouble(String cardNumber) {
+            double limit = getCardBalance(cardNumber);
+            String transferAmount = Double.toString(getRandomDoubleAmount(limit));
+            return transferAmount;
         }
 
 
-        public static int getRandomAmount(int max) {
+        private static int getRandomAmount(int max) {
             Random random = new Random();
             return random.nextInt(max);
         }
-        public static double getRandomDoubleAmount(double max) {
+        private static double getRandomDoubleAmount(double max) {
             Random random = new Random();
             return random.nextDouble();
         }

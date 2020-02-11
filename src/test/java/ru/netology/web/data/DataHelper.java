@@ -27,4 +27,16 @@ public class DataHelper {
 
         return new VerificationCode("12345");
     }
+    @Value
+    public static class MoneyTransfer {
+        private String cardNumber;
+    }
+    public static MoneyTransfer firstCardInfo() {
+
+        return new MoneyTransfer("5559 0000 0000 0001");
+    }
+    public static MoneyTransfer secondCardInfo() {
+
+        return new MoneyTransfer("5559 0000 0000 0002");
+    }
 }
