@@ -1,4 +1,4 @@
-### Project status [![Build status](https://ci.appveyor.com/api/projects/status/ftjuer3vn002v7e1?svg=true)](https://ci.appveyor.com/project/marinagagarina/pageobjecttest))
+### Project status [![Build status](https://ci.appveyor.com/api/projects/status/dx9mfbtjgb7573ut?svg=true)](https://ci.appveyor.com/project/marinagagarina/pageobjecttest1)
 
 ## Домашнее задание к занятию «2.4. BDD»
 
